@@ -3,63 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRestaurar Sistema: Atos Santiago</title>
+    <title>Restore System: Atos Santiago</title>
     <style>
-        body {
-            background-color: #0d1117;
-            color: #4ade80;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
+        body { 
+            background-color: #0d1117; 
+            color: #4ade80; font-family: 'Courier New', Courier, monospace; 
+            display: flex; 
+            justify-content: 
+            center; align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            overflow: hidden; 
         }
-        #terminal {
-            width: 90%;
-            max-width: 600px;
+        #terminal { 
+            width: 90%; 
+            max-width: 600px; 
             background: #030712;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 30px rgba(248, 81, 73, 0.1);
-            border: 1px solid #30363d;
+            padding: 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 0 30px rgba(248, 81, 73, 0.1); 
+            border: 1px solid #30363d; }
+        .cursor { 
+            display: inline-block; 
+            width: 10px; 
+            background-color: #4ade80; 
+            animation: blink 1s infinite; 
         }
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            background-color: #4ade80;
-            animation: blink 1s infinite;
+        @keyframes blink { 
+            50% { 
+                opacity: 0; 
+            }
         }
-        @keyframes blink { 50% { opacity: 0; } }
-        .error { color: #f85149; }
-        .highlight { color: #f0883e; }
-        h1 { color: #00ff00; font-size: 1.2rem; margin-bottom: 10px; }
-        
-        #form-container { display: none; margin-top: 20px; border-top: 1px dashed #30363d; padding-top: 15px; }
-        input {
-            background: transparent;
-            border: none;
+        .error { 
+            color: #f85149; 
+        }
+        .highlight { 
             color: #f0883e;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.1rem;
-            width: 100%;
-            outline: none;
-            margin-top: 10px;
         }
-        label { color: #4ade80; display: block; }
-        button {
+        h1 { 
+            color: #00ff00; 
+            font-size: 1.2rem;
+            margin-bottom: 10px; 
+        }
+        #form-container {
+            display: none; 
+            margin-top: 20px; 
+            border-top: 1px dashed #30363d; 
+            padding-top: 15px; }
+        input { 
+            background: transparent; 
+            border: none; color: #f0883e; 
+            font-family: inherit; 
+            font-size: 1.1rem; 
+            width: 100%; 
+            outline: none; 
+            margin-top: 10px; 
+        }
+        button { 
             background: #f85149;
-            color: #ffffff;
-            border: none;
-            padding: 8px 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
-            border-radius: 4px;
+            color: #ffffff; 
+            border: none; 
+            padding: 8px 20px; 
+            margin-top: 20px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            border-radius: 4px; 
         }
-        button:hover { background: #da3633; }
+        button:hover { 
+            background: #da3633;
+        }
     </style>
 </head>
 <body>
@@ -69,14 +81,11 @@
     <span id="cursor" class="cursor">_</span>
 
     <div id="form-container">
-        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+        <form id="protocolForm" action="https://formspree.io/f/xreaepow" method="POST">
             <label for="resposta">> Digite sua resposta (Sim/Não):</label>
             <input type="text" name="resposta" id="resposta" placeholder="..." required autofocus autocomplete="off">
-            
-            <label style="margin-top: 15px;">> Quer dizer algo mais?</label>
-            <input type="text" name="mensagem_adicional" placeholder="Opcional...">
-            
-            <button type="submit">REBOOT_RELATIONSHIP</button>
+            <input type="hidden" name="_replyto" value="gbriel.cnt@gmail.com">
+            <button type="submit" id="submitBtn">EXECUTAR_DECISAO</button>
         </form>
     </div>
 </div>
@@ -85,19 +94,23 @@
     const output = document.getElementById('output');
     const cursor = document.getElementById('cursor');
     const formContainer = document.getElementById('form-container');
+    const protocolForm = document.getElementById('protocolForm');
 
     const lines = [
-        "> <span class='error'>[AVISO] Detectada falha no sistema emocional...</span>",
+        "> <span class='error'>[AVISO] Falha crítica detectada...</span>",
         "> Tentando recuperar arquivos de 'Nós'...",
         "> [OK] Memórias localizadas.",
         "> [OK] Sentimento de arrependimento processado.",
         "",
         "<h1>Santiago, eu cometi um erro.</h1>",
         "Percebi que o sistema não funciona sem a sua integração.",
-        "Você é o meu porto seguro, especialmente nos dias difíceis.",
-        "Estou aqui pedindo um <span class='highlight'>git checkout</span> para o nosso começo.",
+        "Você é o meu porto seguro, especialmente agora.",
+        "Sinto saudades de estar contigo, de conversar com você.",
+        "Amei ter te encontrado ontem, mesmo que você tenha ficado bravo.",
+        "Não tô com muito tempo pra desenvolvimento, mas fiz isso pra demonstrar meu amor por vc, meu gatinho!"
+        "Estou pedindo um <span class='highlight'>git checkout</span> para o nosso recomeço.",
         "",
-        "> Deseja restaurar a conexão e reatar o namoro? (S/N)",
+        "> Deseja restaurar a conexão e reatar? (S/N)",
     ];
 
     let i = 0;
@@ -105,13 +118,43 @@
         if (i < lines.length) {
             output.innerHTML += lines[i] + "<br>";
             i++;
-            setTimeout(typeWriter, 1200); // Um pouco mais lento para dar peso à mensagem
+            setTimeout(typeWriter, 1000);
         } else {
             cursor.style.display = 'none';
             formContainer.style.display = 'block';
             document.getElementById('resposta').focus();
         }
     }
+
+    protocolForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const resp = document.getElementById('resposta').value.toLowerCase().trim();
+        const btn = document.getElementById('submitBtn');
+        
+        btn.disabled = true;
+        btn.innerText = "PROCESSANDO...";
+
+        // Envia para o Formspree via Fetch para não mudar de página antes da lógica
+        fetch(protocolForm.action, {
+            method: 'POST',
+            body: new FormData(protocolForm),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (resp === 'sim' || resp === 's') {
+                // Redireciona para o WhatsApp
+                window.location.href = "https://wa.me/5597981110322?text=Eu+aceito+restaurar+o+sistema";
+            } else {
+                // Notifica e mostra mensagem de afastamento
+                document.body.innerHTML = `
+                    <div id="terminal" style="border-color: #f85149;">
+                        <h1 class="error">> Resposta enviada com sucesso.</h1>
+                        <p>> Protocolo de afastamento iniciado.</p>
+                        <p>> Você será bloqueado das redes sociais em breve.</p>
+                        <p>> Adeus, Santiago.</p>
+                    </div>`;
+            }
+        });
+    });
 
     typeWriter();
 </script>
