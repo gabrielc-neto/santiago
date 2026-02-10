@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para: Atos Santiago</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #4ade80;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        #terminal {
+            width: 90%;
+            max-width: 600px;
+            background: #030712;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(74, 222, 128, 0.1);
+            border: 1px solid #30363d;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #4ade80;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        .heart { color: #f85149; font-size: 1.5rem; }
+        h1 { color: #00ff00; font-size: 1.2rem; margin-bottom: 10px; }
+        
+        /* Estilização do formulário */
+        #form-container { display: none; margin-top: 20px; border-top: 1px dashed #30363d; padding-top: 15px; }
+        input {
+            background: transparent;
+            border: none;
+            color: #f0883e;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+        label { color: #4ade80; display: block; margin-bottom: 5px; }
+        button {
+            background: #4ade80;
+            color: #030712;
+            border: none;
+            padding: 5px 15px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button:hover { background: #22c55e; }
+    </style>
+</head>
+<body>
+
+<div id="terminal">
+    <div id="output"></div>
+    <span id="cursor" class="cursor">_</span>
+
+    <div id="form-container">
+        <form action="https://formspree.io/f/gbriel.cnt@gmail.com" method="POST">
+            <label for="resposta">> Digite sua resposta, Santiago:</label>
+            <input type="text" name="resposta" id="resposta" placeholder="Escreva aqui..." required autofocus>
+            <button type="submit">EXECUTAR PROTOCOLO_AMOR</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const output = document.getElementById('output');
+    const cursor = document.getElementById('cursor');
+    const formContainer = document.getElementById('form-container');
+
+    const lines = [
+        "> Iniciando sistema de reconhecimento...",
+        "> Alvo detectado: Atos Santiago",
+        "> Analisando compatibilidade...",
+        "> [####################] 100%",
+        "> Resultado: Conexão perfeita encontrada!",
+        "",
+        "<h1>Olá, Santiago!</h1>",
+        "Eu queria te dizer em código o que o coração já compilou faz tempo:",
+        "Você é o meu repositório favorito e a melhor parte do meu dia.",
+        "",
+        "> Deseja iniciar o protocolo 'Namoro'? (S/N)",
+        "> Carregando terminal de resposta..."
+    ];
+
+    let i = 0;
+    function typeWriter() {
+        if (i < lines.length) {
+            output.innerHTML += lines[i] + "<br>";
+            i++;
+            setTimeout(typeWriter, 800);
+        } else {
+            cursor.style.display = 'none';
+            formContainer.style.display = 'block';
+            document.getElementById('resposta').focus();
+        }
+    }
+
+    typeWriter();
+</script>
+
+</body>
+</html>
